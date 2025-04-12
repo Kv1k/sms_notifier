@@ -92,7 +92,7 @@ php bin/console sql-migrations:execute
 
 ## Import CSV 📥
 
-Le fichier est placé dans var/uploads/ 
+Le fichier est placé dans public/uploads/ 
 
 Lancer l'import :
 
@@ -110,16 +110,21 @@ Un rapport est généré dans la console indiquant :
 
 ## Envoi d’alertes météo 🚨
 
-1. Configurer et lancer le worker Messenger :
+1. Lancer le serveur symfony en arrière plan : 
 
 ```bash
-php bin/console messenger:setup-transports
+symfony server:start -d
+```
+
+2. Configurer et lancer le worker Messenger :
+
+```bash
 php bin/console messenger:consume async -vv
 ```
 
 Cela permet de démarrer l’envoi des messages et d'afficher les logs pour suivre l'état d'exécution.
 
-2. Appeler l’endpoint /alerter :
+3. Appeler l’endpoint /alerter :
 
 ```bash
 curl -X POST http://localhost:8000/alerter -H "X-API-KEY: RTmIxqzx10e0kqZOdLHZMC25sBti" -d "insee=34172"
@@ -144,14 +149,13 @@ En cas de clé absente ou incorrecte, l’API retourne un statut HTTP 401 ou 400
 
 ├── config/
 ├── migrations/
-├── public/
+├── public/   <-- Fichiers CSV importés
 ├── src/
 │   ├── Command/
 │   ├── Controller/
 │   ├── Message/
 │   ├── MessageHandler/
-│   └── Service/
-├── var/uploads/          <-- Fichiers CSV importés
+│   └── Service/         
 ├── .env.dev              
 ├── composer.json
 └── README.md

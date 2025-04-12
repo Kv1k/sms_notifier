@@ -34,7 +34,7 @@ class UploadCsvCommand extends Command
     {
         $this
             ->setDescription('Importe un fichier CSV et insère les données dans la base.')
-            ->addArgument('file', InputArgument::OPTIONAL, 'Le chemin du fichier CSV à importer', 'var/uploads/data.csv');
+            ->addArgument('file', InputArgument::OPTIONAL, 'Le chemin du fichier CSV à importer', 'public/uploads/data.csv');
     }
 
     /**
