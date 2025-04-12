@@ -124,7 +124,7 @@ php bin/console messenger:consume async -vv
 
 Cela permet de démarrer l’envoi des messages et d'afficher les logs pour suivre l'état d'exécution.
 
-3. Appeler l’endpoint /alerter :
+3. Sur un autre terminal, appeler l’endpoint /alerter :
 
 ```bash
 curl -X POST http://localhost:8000/alerter -H "X-API-KEY: RTmIxqzx10e0kqZOdLHZMC25sBti" -d "insee=34172"
