@@ -4,7 +4,12 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
-
+    host: '%env(BDDHOST)%'
+    port: '%env(BDDPORT)%'
+    userDb: '%env(BDDUSER)%'
+    userPass: '%env(BDDPASSWORD)%'
+    bddName: '%env(BDDNAME)%'
+    app.api_key: '%env(X_API_KEY)%'
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -19,6 +24,19 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+
+     # Configuration explicite pour DestinatairesManager
+    App\Service\DestinatairesManager:
+        arguments:
+            $host: '%host%'
+            $port: '%port%'
+            $userDb: '%userDb%'
+            $userPass: '%userPass%'
+            $bddName: '%bddName%'
+
+    App\Service\SmsService:
+        arguments:
+            $logger: '@logger'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
