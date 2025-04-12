@@ -116,7 +116,7 @@ Un rapport est généré dans la console indiquant :
 symfony server:start -d
 ```
 
-2. Configurer et lancer le worker Messenger :
+2. Lancer le worker Messenger :
 
 ```bash
 php bin/console messenger:consume async -vv
