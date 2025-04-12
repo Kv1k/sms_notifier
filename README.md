@@ -29,8 +29,8 @@ Ce projet Symfony 6.4 permet d'importer des destinataires depuis un fichier CSV 
 ### 1. Récupérer le projet
 
 ```bash
-git clone <url-du-repo>
-cd sms-alert-system
+git clone git@github.com:Kv1k/sms_notifier.git
+cd sms-notifier
 ```
 
 ### 2. Installer les dépendances
